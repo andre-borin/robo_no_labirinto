@@ -24,8 +24,7 @@ __Celulas__: mostra as celulas para as quais o labirinto é abstraido.
 O algoritmo de navegação no labirinto ficou concentrado no arquivo simple.py para simplicidade.
 
 __setup()__: Função responsável pelas definições iniciais.\
-__loop()__: Função executada a cada passo da simulação, responsável pelo controle.\
-\
+__loop()__: Função executada a cada passo da simulação, responsável pelo controle.
 
 ## Mapa:
 
