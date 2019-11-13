@@ -1,6 +1,8 @@
 # Robo no Labirinto
 
-Simulador simples utilizado para a disciplina de inteligência artificial.
+Simulador simples utilizado na disciplina de inteligência artificial.
+
+![Screenshot](/robot-screenshot.png)
 
 Para executar a versâo em python:
 
@@ -9,23 +11,21 @@ python Simulacao_robo.py
 ```
 O algoritmo de navegação no labirinto ficou concentrado no arquivo simple.py para simplicidade.
 
-__Funções__:\
+## Funções:
 \
-__setup()__\
-Função responsável pelas definições iniciais.\
+__setup()__: Função responsável pelas definições iniciais.\
 \
-__loop()__\
-Função chamada a cada passo da simulação.\
+__loop()__: Função executada a cada passo da simulação, responsável pelo controle.\
 \
 No código há mais exemplos de como acessar o mapa, e adicionar comandos a uma lista para o robo.\
+
+## Controles na interface:
 \
-__Controles na interface:__\
-\
-_Liga/Desliga_: ativa ou desativa a simulação.\
-_Mapa_: muda o labirinto, reiniciando a simulação.\
-_Ideal/Real_: modo de simulação do controle do robô.\
-_Sensores_: mostra a localização da varredura dos sensores.\
-_Celulas_: mostra as celulas para as quais o labirinto é abstraido.
+__Liga/Desliga__: ativa ou desativa a simulação.\
+__Mapa__: muda o labirinto, reiniciando a simulação.\
+__Ideal/Real__: modo de simulação do controle do robô.\
+__Sensores__: mostra a localização da varredura dos sensores.\
+__Celulas__: mostra as celulas para as quais o labirinto é abstraido.
 
 
 
