@@ -4,7 +4,7 @@ Simulador simples utilizado na disciplina de inteligência artificial.
 
 ![Screenshot](/robot-screenshot.png)
 
-Para executar a versâo em python:
+Para executar a versão em python:
 
 ```bash
 python Simulacao_robo.py
@@ -14,10 +14,9 @@ O algoritmo de navegação no labirinto ficou concentrado no arquivo simple.py p
 ## Funções:
 \
 __setup()__: Função responsável pelas definições iniciais.\
-\
 __loop()__: Função executada a cada passo da simulação, responsável pelo controle.\
 \
-No código há mais exemplos de como acessar o mapa, e adicionar comandos a uma lista para o robo.\
+No código (simple.py) há mais exemplos de como acessar o mapa, e adicionar comandos a uma lista para o robo.
 
 ## Controles na interface:
 \
