@@ -78,7 +78,7 @@ class Mapa:
         self.altura_em_celulas = 11  # em numero de celulas
         self.fator_escala_x = 57  # dimensao X da celula em pixels
         self.fator_escala_y = 60  # dimensao Y da celula em pixels
-        self.dist_limite_aberta = 40  # menor distancia para considerar que a parede esta aberta
+        self.dist_limite_aberta = 50  # menor distancia para considerar que a parede esta aberta
         self.indice_x_robo = 0  # indice X onde se encontra o robo no mapa
         self.indice_y_robo = 0  # indice Y onde se encontra o robo no mapa
 
@@ -122,6 +122,21 @@ class Mapa:
         self.indice_x_robo = int(coord_x_estimada / self.fator_escala_x)
         self.indice_y_robo = int(-coord_y_estimada / self.fator_escala_y)
         celula = self.celulas[self.indice_y_robo][self.indice_x_robo]
+        
+        celula_oeste = None
+        celula_leste = None
+        celula_norte = None
+        celula_sul = None
+        
+        if self.indice_x_robo > 0:
+            celula_oeste = self.celulas[self.indice_y_robo][self.indice_x_robo - 1]
+        if self.indice_x_robo < self.largura_em_celulas - 1:
+            celula_leste = self.celulas[self.indice_y_robo][self.indice_x_robo + 1]
+        if self.indice_y_robo > 0:
+            celula_norte = self.celulas[self.indice_y_robo - 1][self.indice_x_robo]
+        if self.indice_y_robo < self.altura_em_celulas - 1:
+            celula_sul   = self.celulas[self.indice_y_robo + 1][self.indice_x_robo]
+        
         celula.desconhecido = False
         coord_x_celula = (coord_x_estimada / self.fator_escala_x - self.indice_x_robo )
         coord_y_celula = (- coord_y_estimada / self.fator_escala_y - self.indice_y_robo )
@@ -133,56 +148,80 @@ class Mapa:
             if direcao == Direcoes.OESTE:
                 if dist_frontal > self.dist_limite_aberta:
                     celula.aberto_oeste = True
+                    if celula_oeste is not None:
+                        celula_oeste.aberto_leste = True
                 else:
                     celula.aberto_oeste = False
                 if dist_esquerda > self.dist_limite_aberta:
                     celula.aberto_sul = True
+                    if celula_sul is not None:
+                        celula_sul.aberto_norte = True
                 else:
                     celula.aberto_sul = False
                 if dist_direita > self.dist_limite_aberta:
                     celula.aberto_norte = True
+                    if celula_norte is not None:
+                        celula_norte.aberto_sul = True                   
                 else:
                     celula.aberto_norte = False
 
             if direcao == Direcoes.LESTE:
                 if dist_frontal > self.dist_limite_aberta:
                     celula.aberto_leste = True
+                    if celula_leste is not None:
+                        celula_leste.aberto_oeste = True
                 else:
                     celula.aberto_leste = False
                 if dist_esquerda > self.dist_limite_aberta:
                     celula.aberto_norte = True
+                    if celula_norte is not None:
+                        celula_norte.aberto_sul = True
                 else:
                     celula.aberto_norte = False
                 if dist_direita > self.dist_limite_aberta:
                     celula.aberto_sul = True
+                    if celula_sul is not None:
+                        celula_sul.aberto_norte = True                    
                 else:
                     celula.aberto_sul = False
 
             if direcao == Direcoes.NORTE:
                 if dist_frontal > self.dist_limite_aberta:
                     celula.aberto_norte = True
+                    if celula_norte is not None:
+                        celula_norte.aberto_sul = True                    
                 else:
                     celula.aberto_norte = False
                 if dist_esquerda > self.dist_limite_aberta:
                     celula.aberto_oeste = True
+                    if celula_oeste is not None:
+                        celula_oeste.aberto_leste = True                    
                 else:
                     celula.aberto_oeste = False
                 if dist_direita > self.dist_limite_aberta:
                     celula.aberto_leste = True
+                    if celula_leste is not None:
+                        celula_leste.aberto_oeste = True                    
                 else:
                     celula.aberto_leste = False
 
             if direcao == Direcoes.SUL:
                 if dist_frontal > self.dist_limite_aberta:
                     celula.aberto_sul = True
+                    if celula_sul is not None:
+                        celula_sul.aberto_norte = True                    
                 else:
                     celula.aberto_sul = False
                 if dist_esquerda > self.dist_limite_aberta:
                     celula.aberto_leste = True
+                    if celula_leste is not None:
+                        celula_leste.aberto_oeste = True                    
                 else:
                     celula.aberto_leste = False
                 if dist_direita > self.dist_limite_aberta:
                     celula.aberto_oeste = True
+                    if celula_oeste is not None:
+                        celula_oeste.aberto_leste = True                    
                 else:
                     celula.aberto_oeste = False
 

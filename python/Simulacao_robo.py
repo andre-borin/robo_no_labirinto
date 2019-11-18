@@ -246,9 +246,9 @@ class Janela:
         for LY in range(0, self.robo.mapa.altura_em_celulas - 1):
             for LX in range(0, self.robo.mapa.largura_em_celulas - 1):
                 coordenada_esquerda = self.largura_labirinto + LX * tamanho_celula
-                coordenada_direita = self.largura_labirinto + (LX + 1) * tamanho_celula
+                coordenada_direita = self.largura_labirinto + (LX + 1) * tamanho_celula - 1
                 coordenada_superior = LY * tamanho_celula
-                coordenada_inferior = (LY + 1) * tamanho_celula
+                coordenada_inferior = (LY + 1) * tamanho_celula - 1
                 if not self.robo.mapa.celulas[LY][LX].aberto_leste:
                     coordenada_direita -= 1
                 if not self.robo.mapa.celulas[LY][LX].aberto_oeste:
